@@ -11,7 +11,7 @@
     import { useStore } from 'vuex'
 
     export default defineComponent({
-        name: 'DemoComponent1',
+        name: 'DemoComponent2',
         setup() {
             const { state } = useStore()
             return {

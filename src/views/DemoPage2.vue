@@ -26,7 +26,7 @@
     import { useStore } from 'vuex'
 
     export default defineComponent({
-        name: 'Main',
+        name: 'DemoPage2',
         components: {
             DemoComponent1,
             DemoComponent2,
