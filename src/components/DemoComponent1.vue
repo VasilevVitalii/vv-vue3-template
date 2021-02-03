@@ -1,7 +1,9 @@
 <template>
     <div>
         <h1>Demo component #1 (props), counter {{ counter }}</h1>
-        <a-button type="primary" @click="$emit('change_counter', counter + 1)"> increment counter </a-button>
+        <a-button type="primary" @click="$emit('change_counter', counter ? counter + 1 : 1)">
+            increment counter
+        </a-button>
         <a-input v-model:value="text" />
     </div>
 </template>
