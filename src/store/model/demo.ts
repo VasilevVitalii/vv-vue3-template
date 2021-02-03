@@ -6,6 +6,6 @@ export class Demo implements IDemo {
     text: string
 
     constructor() {
-        this.text = 'demo text'
+        this.text = 'demo text from store'
     }
 }
