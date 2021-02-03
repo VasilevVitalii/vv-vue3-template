@@ -8,14 +8,13 @@
 
 <script lang="ts">
     import { defineComponent } from 'vue'
-    import { useStore } from 'vuex'
+    import store from '@/store'
 
     export default defineComponent({
         name: 'DemoComponent2',
         setup() {
-            const { state } = useStore()
             return {
-                state,
+                state: store.state,
             }
         },
         props: {},

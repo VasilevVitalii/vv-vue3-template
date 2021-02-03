@@ -23,7 +23,7 @@
     import { defineComponent } from 'vue'
     import DemoComponent1 from '@/components/DemoComponent1.vue'
     import DemoComponent2 from '@/components/DemoComponent2.vue'
-    import { useStore } from 'vuex'
+    import store from '@/store'
 
     export default defineComponent({
         name: 'DemoPage1',
@@ -32,9 +32,8 @@
             DemoComponent2,
         },
         setup() {
-            const { state } = useStore()
             return {
-                state,
+                state: store.state,
             }
         },
         computed: {},
