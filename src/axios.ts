@@ -5,10 +5,10 @@ class Result {
     method: string
     statusCode: number
     error?: string
-    response: unknown
-    reply: unknown
+    response: any
+    reply: any
 
-    constructor(suburl: string, method: string, statusCode: number, response: unknown, reply: unknown, error?: string) {
+    constructor(suburl: string, method: string, statusCode: number, response: any, reply: any, error?: string) {
         this.suburl = suburl
         this.method = method
         this.statusCode = statusCode
