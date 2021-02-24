@@ -39,3 +39,21 @@ router.beforeEach((to, from, next) => {
 })
 
 export default router
+
+function goto_core(path: string) {
+    if (router.currentRoute.value.path !== path) {
+        router.push({ path: path })
+    }
+}
+
+export const goto = {
+    GotoDemo1: function (): void {
+        goto_core('/demo1')
+    },
+    GotoDemo2: function (): void {
+        goto_core('/demo2')
+    },
+    GotoDemo3: function (): void {
+        goto_core('/demo3')
+    },
+}

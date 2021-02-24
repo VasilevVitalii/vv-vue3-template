@@ -2,16 +2,16 @@
     <div>
         <h1>Demo page #2</h1>
         <DemoComponent1
-            :counter="state.counter"
-            :demoModel="state.demo"
+            :counter="code.state.counter"
+            :demoModel="code.state.demo"
             @change_counter="
                 (value) => {
-                    state.counter = value
+                    code.state.counter = value
                 }
             "
             @change_demo="
                 (value) => {
-                    state.demo = value
+                    code.state.demo = value
                 }
             "
         ></DemoComponent1>
@@ -23,7 +23,7 @@
     import { defineComponent } from 'vue'
     import DemoComponent1 from '@/components/DemoComponent1.vue'
     import DemoComponent2 from '@/components/DemoComponent2.vue'
-    import store from '@/store'
+    import { code } from '@/code'
 
     export default defineComponent({
         name: 'DemoPage2',
@@ -33,7 +33,7 @@
         },
         setup() {
             return {
-                state: store.state,
+                code: code,
             }
         },
         computed: {},

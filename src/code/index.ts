@@ -1,16 +1,21 @@
 // import { ref } from 'vue'
+
 import { createStore } from 'vuex'
 import { Demo } from './model/demo'
+import { transport } from './transport/transport'
+import { goto } from './router'
 
 const demo = new Demo()
-
-export default createStore({
+const vuex = createStore({
     state: {
         counter: 1,
         demo: demo,
         // txt: ref(''),
     },
-    mutations: {},
-    actions: {},
-    modules: {},
 })
+
+export const code = {
+    state: vuex.state,
+    transport: transport,
+    router: goto,
+}

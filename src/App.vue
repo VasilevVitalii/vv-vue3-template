@@ -6,13 +6,22 @@
         |
         <router-link to="/demo3">DemoPage3(axios)</router-link>
     </div>
+    <a-button @click="code.router.GotoDemo1()">GotoDemo1 outside fouter link</a-button>
+    <a-button @click="code.router.GotoDemo2()">GotoDemo2 outside fouter link</a-button>
+    <a-button @click="code.router.GotoDemo3()">GotoDemo3 outside fouter link</a-button>
     <router-view style="margin: 10px" />
 </template>
 
 <script lang="ts">
     import { defineComponent } from 'vue'
+    import { code } from '@/code'
 
     export default defineComponent({
         name: 'App',
+        setup() {
+            return {
+                code: code,
+            }
+        },
     })
 </script>

@@ -16,7 +16,7 @@
 
 <script lang="ts">
     import { defineComponent } from 'vue'
-    import axiosSwap from '../axios'
+    import { code } from '@/code'
 
     export default defineComponent({
         name: 'DemoPage3',
@@ -24,6 +24,7 @@
         setup() {
             return {
                 url_info: process.env.VUE_APP_URL,
+                code: code,
             }
         },
         computed: {},
@@ -34,18 +35,20 @@
         },
         methods: {
             async send(method: string, good: boolean) {
-                let url = good ? 'posts' : 'postsBAD'
                 if (method === 'get') {
-                    let res = await axiosSwap.send(url)
+                    const res = good
+                        ? await code.transport.jsonplaceholder_typicode_com_get_good()
+                        : await code.transport.jsonplaceholder_typicode_com_get_bad()
                     this.reply = JSON.stringify(res, null, 4)
-                }
-                if (method === 'post') {
-                    let object_for_post = {
+                } else if (method === 'post') {
+                    const object_for_post = {
                         title: 'foo',
                         body: 'bar',
                         userId: 1,
                     }
-                    let res = await axiosSwap.post(url, object_for_post)
+                    const res = good
+                        ? await code.transport.jsonplaceholder_typicode_com_post_good(object_for_post)
+                        : await code.transport.jsonplaceholder_typicode_com_post_bad(object_for_post)
                     this.reply = JSON.stringify(res, null, 4)
                 }
             },
