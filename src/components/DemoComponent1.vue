@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h1>Demo component #1 (props), counter {{ counter }}</h1>
+        <h2>Demo component #1 (props and emits)</h2>
+        <div>counter {{ counter }}</div>
         <a-button type="primary" @click="$emit('change_counter', counter ? counter + 1 : 1)">
             increment counter
         </a-button>

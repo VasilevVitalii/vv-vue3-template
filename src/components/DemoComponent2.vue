@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h1>Demo component #2 (store), counter {{ code.state.counter }}</h1>
+        <h2>Demo component #2 (vuex)</h2>
+        <div>counter {{ code.state.counter }}</div>
         <a-button type="primary" @click="code.state.counter++"> increment counter </a-button>
         <a-input v-model:value="code.state.demo.text" />
     </div>
