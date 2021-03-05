@@ -3,14 +3,22 @@
         <h1>Demo page #4 with virtual scroll</h1>
         <FeatureSplit style="height: 400px">
             <template v-slot:left-pane>
-                <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
+                <!-- <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
                     <DemoComponent4 :item="item"></DemoComponent4>
-                </div>
+                </div> -->
+                <VueComponentScroller class="scroll" :itemCount="100000" :itemHeight="50">
+                    <template class="item" v-slot="{ index }">Item number {{ index }}</template>
+                </VueComponentScroller>
             </template>
             <template v-slot:right-pane>
-                <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
+                <VueComponentScroller class="scroll" :itemCount="code.state.bigdata.list.length" :itemHeight="50">
+                    <template class="item" v-slot="{ index }"
+                        ><DemoComponent4 :item="code.state.bigdata.list[index - 1]"></DemoComponent4
+                    ></template>
+                </VueComponentScroller>
+                <!-- <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
                     <DemoComponent4 :item="item"></DemoComponent4>
-                </div>
+                </div> -->
             </template>
         </FeatureSplit>
     </div>
@@ -21,12 +29,14 @@
     import FeatureSplit from '@/feature/FeatureSplit.vue'
     import { code } from '@/code'
     import DemoComponent4 from '@/components/DemoComponent4.vue'
+    import VueComponentScroller from '@/feature/VueComponentScroller.vue'
 
     export default defineComponent({
         name: 'DemoPage4',
         components: {
             FeatureSplit,
             DemoComponent4,
+            VueComponentScroller,
         },
         setup() {
             return {
@@ -40,3 +50,19 @@
         methods: {},
     })
 </script>
+
+<style>
+    .scroll {
+        height: 300px;
+        margin: 50px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border: 2px solid red;
+    }
+    .item {
+        text-align: center;
+        height: 40px;
+        margin: auto 20px;
+        box-sizing: border-box;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+</style>
