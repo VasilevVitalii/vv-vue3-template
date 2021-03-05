@@ -2,6 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import DemoPage1 from '../views/DemoPage1.vue'
 import DemoPage2 from '../views/DemoPage2.vue'
 import DemoPage3 from '../views/DemoPage3.vue'
+import DemoPage4 from '../views/DemoPage4.vue'
+
 // access to vues store
 // import store from '../store/index'
 
@@ -21,6 +23,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'DemoPage3',
         component: DemoPage3,
     },
+    {
+        path: '/demo4',
+        name: 'DemoPage4',
+        component: DemoPage4,
+    },
 ]
 
 const router = createRouter({
@@ -31,7 +38,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     // access to vues store
     // console.log(store.state)
-    if (to.name === 'DemoPage1' || to.name === 'DemoPage2' || to.name === 'DemoPage3') {
+    if (to.name === 'DemoPage1' || to.name === 'DemoPage2' || to.name === 'DemoPage3' || to.name === 'DemoPage4') {
         next()
     } else {
         next({ name: 'DemoPage1' })
@@ -55,5 +62,8 @@ export const goto = {
     },
     GotoDemo3: function (): void {
         goto_core('/demo3')
+    },
+    GotoDemo4: function (): void {
+        goto_core('/demo4')
     },
 }

@@ -2,6 +2,7 @@
 
 import { createStore } from 'vuex'
 import { Demo } from './model/demo'
+import { BigData } from './model/bigdata'
 import { transport } from './transport/transport'
 import { goto } from './router'
 
@@ -10,6 +11,7 @@ const vuex = createStore({
     state: {
         counter: 1,
         demo: demo,
+        bigdata: new BigData(),
         // txt: ref(''),
     },
 })
