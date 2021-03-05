@@ -4,12 +4,12 @@
         <FeatureSplit style="height: 400px">
             <template v-slot:left-pane>
                 <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
-                    <FileOutlined /> {{ item.id }} {{ item.name }}
+                    <DemoComponent4 :item="item"></DemoComponent4>
                 </div>
             </template>
             <template v-slot:right-pane>
                 <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
-                    <FileFilled /> {{ item.id }} {{ item.name }}
+                    <DemoComponent4 :item="item"></DemoComponent4>
                 </div>
             </template>
         </FeatureSplit>
@@ -20,14 +20,13 @@
     import { defineComponent } from 'vue'
     import FeatureSplit from '@/feature/FeatureSplit.vue'
     import { code } from '@/code'
-    import { FileOutlined, FileFilled } from '@ant-design/icons-vue'
+    import DemoComponent4 from '@/components/DemoComponent4.vue'
 
     export default defineComponent({
         name: 'DemoPage4',
         components: {
             FeatureSplit,
-            FileOutlined,
-            FileFilled,
+            DemoComponent4,
         },
         setup() {
             return {

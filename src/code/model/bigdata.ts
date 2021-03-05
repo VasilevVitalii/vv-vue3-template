@@ -1,10 +1,10 @@
-type TBigData = {
+export type TBigData = {
     id: number
     name: string
 }
 
 export class BigData {
-    list: Array<TBigData>
+    list: TBigData[]
 
     constructor() {
         this.list = []
