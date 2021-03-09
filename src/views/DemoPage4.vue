@@ -6,16 +6,16 @@
                 <!-- <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
                     <DemoComponent4 :item="item"></DemoComponent4>
                 </div> -->
-                <VueComponentScroller class="scroll" :itemCount="100000" :itemHeight="50">
-                    <template class="item" v-slot="{ index }">Item number {{ index }}</template>
-                </VueComponentScroller>
+                <FeatureScroller class="scroll" :itemCount="code.state.bigdata.list.length" :itemHeight="50">
+                    <template class="item" v-slot="{ index }">Item number {{ index - 1 }}</template>
+                </FeatureScroller>
             </template>
             <template v-slot:right-pane>
-                <VueComponentScroller class="scroll" :itemCount="code.state.bigdata.list.length" :itemHeight="50">
+                <FeatureScroller class="scroll" :itemCount="code.state.bigdata.list.length" :itemHeight="50">
                     <template class="item" v-slot="{ index }"
                         ><DemoComponent4 :item="code.state.bigdata.list[index - 1]"></DemoComponent4
                     ></template>
-                </VueComponentScroller>
+                </FeatureScroller>
                 <!-- <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
                     <DemoComponent4 :item="item"></DemoComponent4>
                 </div> -->
@@ -29,14 +29,14 @@
     import FeatureSplit from '@/feature/FeatureSplit.vue'
     import { code } from '@/code'
     import DemoComponent4 from '@/components/DemoComponent4.vue'
-    import VueComponentScroller from '@/feature/VueComponentScroller.vue'
+    import FeatureScroller from '@/feature/FeatureScroller.vue'
 
     export default defineComponent({
         name: 'DemoPage4',
         components: {
             FeatureSplit,
             DemoComponent4,
-            VueComponentScroller,
+            FeatureScroller,
         },
         setup() {
             return {
