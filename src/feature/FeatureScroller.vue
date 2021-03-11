@@ -13,11 +13,18 @@
     export default {
         name: 'FeatureScroller',
         props: {
-            itemHeight: Number,
+            itemHeightPx: {
+                type: Number,
+                default: 50,
+            },
             itemCount: Number,
             bufferSize: {
                 type: Number,
                 default: 5,
+            },
+            height: {
+                type: String,
+                default: '300px',
             },
         },
         data() {
@@ -30,7 +37,7 @@
                 scrollerStyle: {
                     overflowY: 'scroll',
                     outline: 'none',
-                    border: 'transparent',
+                    height: this.height,
                 },
             }
         },
@@ -43,12 +50,12 @@
             },
             startItem() {
                 this.topMargin =
-                    Math.max(0, Math.floor((this.itemHeight * (this.startItem - 1)) / this.marginFactor)) +
-                    this.itemHeight / 2
+                    Math.max(0, Math.floor((this.itemHeightPx * (this.startItem - 1)) / this.marginFactor)) +
+                    this.itemHeightPx / 2
                 this.bottomMargin = this.totalMargin - this.topMargin
             },
             scrollTop() {
-                this.startItem = Math.round((this.scrollTop * this.marginFactor) / this.itemHeight) - this.bufferSize
+                this.startItem = Math.round((this.scrollTop * this.marginFactor) / this.itemHeightPx) - this.bufferSize
                 this.startItem = Math.min(this.startItem, this.maxStartItem)
                 this.startItem = Math.max(this.startItem, -this.bufferSize)
             },
@@ -72,7 +79,7 @@
             },
             itemStyle() {
                 return {
-                    height: this.itemHeight + 'px',
+                    height: this.itemHeightPx + 'px',
                     overflow: 'hidden',
                 }
             },
@@ -82,9 +89,9 @@
                 this.startItem = -this.bufferSize
                 const containerHeight = this.$el.clientHeight
                 this.visibleItemCount =
-                    Math.floor((containerHeight - 2 * this.itemHeight) / this.itemHeight) + 2 * this.bufferSize
-                const visibleHeight = this.itemHeight * this.visibleItemCount
-                const realTotalHeight = this.itemHeight * this.itemCount
+                    Math.floor((containerHeight - 2 * this.itemHeightPx) / this.itemHeightPx) + 2 * this.bufferSize
+                const visibleHeight = this.itemHeightPx * this.visibleItemCount
+                const realTotalHeight = this.itemHeightPx * this.itemCount
                 const totalHeight = Math.min(realTotalHeight, 10e6)
                 this.totalMargin = totalHeight - visibleHeight
                 this.marginFactor = (realTotalHeight - visibleHeight) / this.totalMargin

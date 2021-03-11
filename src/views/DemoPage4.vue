@@ -3,13 +3,13 @@
         <h1>Demo page #4 with virtual scroll</h1>
         <FeatureSplit style="height: 400px">
             <template v-slot:left-pane>
-                <FeatureScroller class="scroll" :itemCount="code.state.bigdata.list.length" :itemHeight="50">
-                    <template class="item" v-slot="{ index }">Item number {{ index - 1 }}</template>
+                <FeatureScroller :itemCount="code.state.bigdata.list.length">
+                    <template v-slot="{ index }">Item number {{ index - 1 }}</template>
                 </FeatureScroller>
             </template>
             <template v-slot:right-pane>
-                <FeatureScroller class="scroll" :itemCount="code.state.bigdata.list.length" :itemHeight="50">
-                    <template class="item" v-slot="{ index }"
+                <FeatureScroller :itemCount="code.state.bigdata.list.length">
+                    <template v-slot="{ index }"
                         ><DemoComponent4 :item="code.state.bigdata.list[index - 1]"></DemoComponent4
                     ></template>
                 </FeatureScroller>
@@ -44,19 +44,3 @@
         methods: {},
     })
 </script>
-
-<style>
-    .scroll {
-        height: 300px;
-        margin: 50px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        border: 2px solid red;
-    }
-    .item {
-        text-align: center;
-        height: 40px;
-        margin: auto 20px;
-        box-sizing: border-box;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    }
-</style>
