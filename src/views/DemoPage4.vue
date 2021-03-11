@@ -3,9 +3,6 @@
         <h1>Demo page #4 with virtual scroll</h1>
         <FeatureSplit style="height: 400px">
             <template v-slot:left-pane>
-                <!-- <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
-                    <DemoComponent4 :item="item"></DemoComponent4>
-                </div> -->
                 <FeatureScroller class="scroll" :itemCount="code.state.bigdata.list.length" :itemHeight="50">
                     <template class="item" v-slot="{ index }">Item number {{ index - 1 }}</template>
                 </FeatureScroller>
@@ -16,9 +13,6 @@
                         ><DemoComponent4 :item="code.state.bigdata.list[index - 1]"></DemoComponent4
                     ></template>
                 </FeatureScroller>
-                <!-- <div v-for="(item, idx) in code.state.bigdata.list" :key="idx">
-                    <DemoComponent4 :item="item"></DemoComponent4>
-                </div> -->
             </template>
         </FeatureSplit>
     </div>
